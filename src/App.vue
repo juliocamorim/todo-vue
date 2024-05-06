@@ -1,6 +1,6 @@
 <script setup>
   import { reactive } from 'vue';
-  import Cabecalho from './components/Cabecalho.vue';
+  import Cabecalho from './components/Cabecalho.vue'
   import Formulario from './components/Formulario.vue'
   import ListaDeTarefas from './components/ListaDeTarefas.vue'
 
@@ -59,14 +59,10 @@
 <template>
   <div class="container">
     <Cabecalho :tarefas-pendentes="getTarefasPendentes().length"/>
-    <Formulario />
-    <ListaDeTarefas />
+    <Formulario :trocar-filtro="evento => estado.filtro = evento.target.value" 
+                  :tarefa-temp="estado.tarefaTemp" :edita-tarefa-temp="evento =>estado.tarefaTemp = evento.target.value" :cadastra-tarefa="cadastraTarefa"/>
+    <ListaDeTarefas :tarefas="getTarefasFiltradas()"/>
   </div>
 </template>
 
-<style scoped>
-  .done {
-    text-decoration: line-through;
-  }
 
-</style>
